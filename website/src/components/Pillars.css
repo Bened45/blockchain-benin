@@ -1,0 +1,75 @@
+.pillars {
+  background-color: #ffffff;
+  padding: 6rem 2rem;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.pillars-main-title {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #0070BD; /* Blue color from image */
+}
+
+.pillars-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+.pillars-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap; /* Re-added to allow cards to wrap */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pillar-card {
+  background-color: #0070BD; /* Blue background from image */
+  color: white;
+  padding: 2.5rem;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 250px;
+  max-width: 280px;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pillar-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.pillar-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .pillars {
+    padding: 4rem 1rem;
+  }
+
+  .pillars-main-title {
+    font-size: 2.2rem;
+  }
+
+  .pillars-subtitle {
+    font-size: 1rem;
+  }
+
+  .pillars-cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pillar-card {
+    min-width: unset;
+    width: 90%;
+  }
+}

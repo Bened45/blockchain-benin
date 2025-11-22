@@ -1,0 +1,108 @@
+.upcoming-events {
+  background-color: #ffffff;
+  padding: 6rem 2rem;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.events-main-title {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  color: #0070BD; /* Blue color from image */
+}
+
+.events-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.event-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card-header {
+  background-color: #28a745; /* Green color from image */
+  color: white;
+  padding: 1.5rem;
+}
+
+.event-card-header h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.event-card-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.event-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 1.5rem;
+}
+
+.event-date {
+  color: #28a745; /* Green color from image */
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.event-button {
+  background-color: #0070BD; /* Blue color from image */
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: center;
+  transition: background-color 0.3s ease;
+}
+
+.event-button:hover {
+  background-color: #005a9a;
+}
+
+@media (max-width: 768px) {
+  .upcoming-events {
+    padding: 4rem 1rem;
+  }
+
+  .events-main-title {
+    font-size: 2.2rem;
+  }
+
+  .events-cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .event-card {
+    width: 90%;
+  }
+
+  .event-card-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .event-date {
+    font-size: 0.9rem;
+  }
+}

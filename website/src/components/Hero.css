@@ -1,0 +1,89 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 2rem;
+  background-image: url('../assets/herobg.jpeg');
+  background-size: cover;
+  background-position: center;
+  color: white; /* Changed to white for better contrast */
+  font-family: 'Poppins', sans-serif;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  color: white; /* Changed to white for better contrast */
+  line-height: 1.8;
+}
+
+.hero-button {
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.hero-button:hover {
+  background-color: #138496;
+  transform: translateY(-2px);
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem; /* Space between buttons */
+  margin-top: 2rem;
+}
+
+.hero-button.secondary {
+  background-color: transparent;
+  color: #17a2b8;
+  border: 2px solid #17a2b8;
+}
+
+.hero-button.secondary:hover {
+  background-color: #17a2b8;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 4rem 1rem; /* Reduce padding */
+  }
+
+  .hero-title {
+    font-size: 2.5rem; /* Reduce font size */
+  }
+
+  .hero-subtitle {
+    font-size: 1rem; /* Reduce font size */
+  }
+
+  .hero-buttons {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 1rem; /* Adjust gap */
+  }
+
+  .hero-button {
+    width: 80%; /* Make buttons wider */
+    margin: 0 auto; /* Center buttons */
+  }
+}

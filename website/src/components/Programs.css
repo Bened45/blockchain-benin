@@ -1,0 +1,90 @@
+.programs-section {
+  padding: 4rem 0; /* py-16 */
+  background-color: #f8f8f8; /* bg-gray-100 */
+  font-family: 'Poppins', sans-serif; /* From tailwind.config.js */
+}
+
+.programs-container {
+  max-width: 896px; /* max-w-4xl (56rem) */
+  margin: 0 auto; /* mx-auto */
+  padding: 0 1rem; /* px-4 */
+}
+
+.programs-title {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 700; /* font-bold */
+  text-align: center;
+  color: #0070BD; /* text-blockchainBlue */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+.programs-subtitle {
+  font-size: 1.25rem; /* text-xl */
+  text-align: center;
+  color: #4b5563; /* text-gray-600 */
+  margin-bottom: 3rem; /* mb-12 */
+}
+
+.programs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* grid-cols-1 md:grid-cols-2 lg:grid-cols-4 */
+  gap: 2rem; /* gap-8 */
+}
+
+.program-card {
+  background-color: #0070BD; /* bg-blockchainBlue */
+  color: white;
+  padding: 1.5rem; /* p-8 - Adjusted for shorter cards */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.program-card .card-title {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 700; /* font-bold */
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+.program-card .card-description {
+  font-size: 1.125rem; /* text-lg */
+  margin-bottom: 2rem; /* mb-8 */
+}
+
+.card-button {
+  margin-top: auto;
+  background-color: white;
+  color: #0070BD; /* text-blockchainBlue */
+  font-weight: 600; /* font-semibold */
+  padding: 0.75rem 1.5rem; /* py-3 px-6 */
+  border-radius: 9999px; /* rounded-full */
+  transition: background-color 0.3s ease; /* transition duration-300 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none; /* Remove default button border */
+  cursor: pointer;
+}
+
+.card-button:hover {
+  background-color: #f3f4f6; /* hover:bg-gray-100 */
+}
+
+.card-button .arrow {
+  margin-left: 0.5rem; /* ml-2 */
+}
+
+/* Responsive adjustments */
+@media (min-width: 1024px) { /* lg breakpoint */
+  .programs-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) { /* md breakpoint */
+  .programs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

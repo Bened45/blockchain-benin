@@ -1,0 +1,70 @@
+.gallery-section {
+  padding: 4rem 0;
+  background-color: #ffffff; /* White background */
+  font-family: 'Poppins', sans-serif;
+}
+
+.gallery-container {
+  max-width: 896px; /* Similar to Programs component */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.gallery-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: #4CAF50; /* Green color from image */
+  margin-bottom: 1rem;
+}
+
+.gallery-subtitle {
+  font-size: 1.25rem;
+  text-align: center;
+  color: #4b5563;
+  margin-bottom: 3rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.gallery-item {
+  height: 250px; /* Fixed height for the items */
+  border-radius: 0.5rem; /* Rounded corners */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Colors from the image */
+.gallery-item.green-light {
+  background-color: #8BC34A; /* A shade of light green */
+}
+
+.gallery-item.yellow-light {
+  background-color: #FFEB3B; /* A shade of light yellow */
+}
+
+.gallery-item.yellow-medium {
+  background-color: #FFC107; /* A shade of medium yellow */
+}
+
+.gallery-item.green-dark {
+  background-color: #689F38; /* A shade of dark green */
+}
+
+.gallery-item.yellow-dark {
+  background-color: #FF9800; /* A shade of dark yellow */
+}
+
+.gallery-item.yellow-medium-light {
+  background-color: #FFD54F; /* Another shade of yellow */
+}

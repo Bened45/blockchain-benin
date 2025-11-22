@@ -1,0 +1,68 @@
+.mission-vision {
+  background-color: #031B2C; /* Dark blue from image */
+  padding: 6rem 2rem;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+.mv-main-title {
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+  color: white;
+}
+
+.mv-cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mv-card {
+  background-color: #031B2C; /* Same as section background, but with border */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+  border-radius: 10px;
+  padding: 2.5rem;
+  flex: 1;
+  min-width: 300px;
+  max-width: 500px;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mv-card-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #2196F3; /* Blue color from image */
+}
+
+.mv-card-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .mission-vision {
+    padding: 4rem 1rem;
+  }
+
+  .mv-main-title {
+    font-size: 2.2rem;
+  }
+
+  .mv-cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mv-card {
+    min-width: unset;
+    width: 90%;
+  }
+}

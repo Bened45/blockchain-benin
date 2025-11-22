@@ -1,0 +1,47 @@
+.partners-section {
+  padding: 4rem 0;
+  background-color: #031B2C; /* User specified color */
+  font-family: 'Poppins', sans-serif;
+}
+
+.partners-container {
+  max-width: 896px; /* Similar to Programs component */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.partners-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  text-align: center;
+  color: #0070BD; /* Using the blockchainBlue color */
+  margin-bottom: 1rem;
+}
+
+.partners-subtitle {
+  font-size: 1.25rem;
+  text-align: center;
+  color: #4b5563;
+  margin-bottom: 3rem;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust as needed for logos */
+  gap: 2rem;
+  justify-items: center; /* Center logos in their grid cells */
+  align-items: center;
+}
+
+.partner-logo-placeholder {
+  width: 120px; /* Example size for logos */
+  height: 80px; /* Example size for logos */
+  background-color: #e0e0e0; /* Light gray placeholder */
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #666;
+  border: 1px solid #ccc;
+}
