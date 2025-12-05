@@ -5,7 +5,7 @@ import "./globals.css";
 
 
 export const metadata: Metadata = {
-    metadataBase: new URL('https://www.blockchainbenin.com'),
+    metadataBase: new URL('https://www.beninblockchain.com'),
     title: {
         default: "Blockchain Bénin - L'avenir de la Blockchain en Afrique",
         template: "%s | Blockchain Bénin"
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     openGraph: {
         type: "website",
         locale: "fr_FR",
-        url: "https://www.blockchainbenin.com",
+        url: "https://www.beninblockchain.com",
         title: "Blockchain Bénin - L'avenir de la Blockchain en Afrique",
         description: "Rejoignez la plus grande communauté blockchain du Bénin. Formez-vous, innovez et construisez l'avenir décentralisé.",
         siteName: "Blockchain Bénin",
