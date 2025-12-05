@@ -71,7 +71,7 @@ const GalleryPage = () => {
         <main className="min-h-screen bg-white">
             <Navbar />
 
-            <div className="pt-24 pb-12">
+            <div className="pt-24 lg:pt-44 pb-12">
                 {/* Header Section */}
                 <div className="container mx-auto px-4 mb-16 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold text-[#4CAF50] mb-4">

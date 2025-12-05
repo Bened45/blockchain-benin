@@ -240,7 +240,7 @@ export default async function EventDetailPage({ params }: PageProps) {
     return (
         <main className="min-h-screen bg-dark-bg">
             {/* Hero with Event Image */}
-            <div className="relative pt-24 pb-0 overflow-hidden">
+            <div className="relative pt-24 lg:pt-44 pb-0 overflow-hidden">
                 {/* Back Link */}
                 <div className="container mx-auto px-4 mb-6">
                     <Link href="/evenements" className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors">

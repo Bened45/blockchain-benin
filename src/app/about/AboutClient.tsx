@@ -72,7 +72,7 @@ const AboutPage = () => {
             <Navbar />
 
             {/* HERO SECTION */}
-            <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 pt-20">
+            <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 pt-20 lg:pt-44">
                 {/* Animated Background Pattern */}
                 <div className="absolute inset-0 opacity-20">
                     <div className="absolute inset-0" style={{

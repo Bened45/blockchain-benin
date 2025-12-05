@@ -13,7 +13,7 @@ export default function SupportPage() {
     return (
         <main className="bg-dark-bg min-h-screen">
             {/* Hero Section */}
-            <div className="relative pt-32 pb-20 overflow-hidden">
+            <div className="relative pt-32 lg:pt-44 pb-20 overflow-hidden">
                 {/* Background gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-900/40 via-dark-bg to-secondary-900/20 pointer-events-none" />
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-500/10 via-transparent to-transparent pointer-events-none" />
@@ -42,7 +42,7 @@ export default function SupportPage() {
 
             {/* Support Options */}
             <Section background="dark" padding="lg">
-                <div className="text-center mb-12">
+                <div className="pt-32 lg:pt-44 pb-12">
                     <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
                         Comment nous aider ?
                     </h2>

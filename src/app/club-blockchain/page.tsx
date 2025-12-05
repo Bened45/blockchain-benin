@@ -14,7 +14,7 @@ export default function ClubBlockchainPage() {
     return (
         <main className="bg-dark-bg min-h-screen text-white">
             {/* Hero Section */}
-            <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden pt-32 lg:pt-44 pb-20">
                 <div className="absolute inset-0 z-0">
                     <Image
                         src="/images/event-workshop.png"

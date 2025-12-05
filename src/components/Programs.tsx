@@ -72,12 +72,12 @@ const Programs = () => {
                 </div>
 
                 {/* Programs Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-[350px] sm:auto-rows-[400px] md:auto-rows-[450px]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-auto sm:auto-rows-[400px] md:auto-rows-[450px]">
                     {programs.map((program, index) => (
                         <div
                             key={index}
                             className={`
-                                group relative rounded-[3rem] overflow-hidden transition-all duration-700 hover:scale-105 cursor-pointer
+                                group relative rounded-[3rem] overflow-hidden transition-all duration-700 hover:scale-105 cursor-pointer min-h-[350px]
                                 ${program.size === 'large' ? 'sm:col-span-2 lg:col-span-2' : 'sm:col-span-1 lg:col-span-1'}
                                 animate-scale-in
                             `}

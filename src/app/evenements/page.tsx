@@ -120,7 +120,7 @@ const EventsPage = () => {
     return (
         <main className="min-h-screen bg-dark-bg">
             {/* Hero Section */}
-            <div className="relative pt-32 pb-16 overflow-hidden">
+            <div className="relative pt-32 lg:pt-44 pb-16 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-secondary-900/30 via-dark-bg to-primary-900/20 pointer-events-none" />
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-secondary-500/10 via-transparent to-transparent pointer-events-none" />
 
@@ -213,7 +213,7 @@ const EventsPage = () => {
                                 className={`group glass rounded-2xl overflow-hidden border ${colors.border} hover:border-white/20 transition-all duration-300`}
                             >
                                 {/* Header with date */}
-                                <div className="p-6 pb-0">
+                                <div className="pt-32 lg:pt-44 pb-12">
                                     <div className="flex items-start justify-between mb-4">
                                         <div className={`px-3 py-1 rounded-full text-xs font-semibold ${colors.bg} text-white`}>
                                             {event.type}

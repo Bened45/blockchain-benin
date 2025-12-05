@@ -13,7 +13,7 @@ export default function JoinPage() {
     return (
         <main className="bg-dark-bg min-h-screen">
             {/* Hero Section */}
-            <div className="relative pt-32 pb-20 overflow-hidden">
+            <div className="relative pt-32 lg:pt-44 pb-20 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-b from-primary-900/20 to-dark-bg pointer-events-none"></div>
                 <div className="container mx-auto px-4 relative z-10 text-center">
                     <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-primary-300 mb-8 animate-fade-in">

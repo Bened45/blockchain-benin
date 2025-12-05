@@ -18,7 +18,7 @@ export default function DonatePage() {
     return (
         <main className="bg-dark-bg min-h-screen">
             {/* Hero Section */}
-            <div className="relative pt-32 pb-16 overflow-hidden">
+            <div className="relative pt-32 lg:pt-44 pb-16 overflow-hidden">
                 {/* Background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-900/30 via-dark-bg to-secondary-900/20 pointer-events-none" />
                 <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-primary-500/10 via-transparent to-transparent pointer-events-none" />
