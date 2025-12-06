@@ -48,7 +48,7 @@ const Navbar = () => {
                     {/* Logo - Absolutely centered on mobile, flex on desktop */}
                     <div className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 lg:flex-shrink-0">
                         <Link href="/" className="flex items-center gap-3 group">
-                            <div className="w-8 h-8 sm:w-20 sm:h-20 lg:w-28 lg:h-28 relative flex-shrink-0">
+                            <div className="w-40 h-10 sm:w-10 sm:h-10 lg:w-28 lg:h-28 relative flex-shrink-0">
                                 <Image
                                     src="/logo.png"
                                     alt="Blockchain Bénin Charity Logo"
