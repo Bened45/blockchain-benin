@@ -6,191 +6,8 @@ import Section from '@/components/ui/Section';
 import Button from '@/components/ui/Button';
 import { Calendar, MapPin, Users, Clock, ArrowLeft, Share2, CheckCircle2, User } from 'lucide-react';
 import { Metadata } from 'next';
-
-// Event data (in a real app, this would come from a database or CMS)
-const eventsData: Record<string, EventType> = {
-    'stellar-pop-city': {
-        id: 1,
-        slug: 'stellar-pop-city',
-        title: 'Stellar Pop City',
-        subtitle: 'Blockchain BENIN Week 2026',
-        date: '06 Décembre 2025',
-        day: '06',
-        month: 'Décembre',
-        year: '2025',
-        time: '09:00 - 18:00',
-        location: 'Cotonou, Bénin',
-        venue: 'Centre de Conférences INFOSEC',
-        address: 'Boulevard de la Marina, Cotonou',
-        description: 'Une semaine dédiée à la blockchain avec conférences, ateliers et networking pour tous les passionnés de blockchain en Afrique.',
-        fullDescription: `La Blockchain BENIN Week est l'événement phare de l'année pour la communauté blockchain béninoise et ouest-africaine.
-
-Pendant une semaine complète, rejoignez-nous pour:
-• Des conférences inspirantes par des experts internationaux
-• Des ateliers pratiques pour tous les niveaux
-• Des sessions de networking avec plus de 500 participants
-• Des opportunités de partenariat et d'investissement
-
-Que vous soyez développeur, entrepreneur, investisseur ou simplement curieux de la technologie blockchain, cet événement est fait pour vous.`,
-        participants: '500+',
-        type: 'Conférence',
-        color: 'primary',
-        price: 'Gratuit',
-        image: '/images/event-conference.png',
-        agenda: [
-            { time: '09:00 - 09:30', title: 'Accueil et enregistrement' },
-            { time: '09:30 - 10:30', title: 'Keynote: L\'avenir de la blockchain en Afrique' },
-            { time: '10:30 - 11:00', title: 'Pause café & networking' },
-            { time: '11:00 - 12:30', title: 'Panel: DeFi et inclusion financière' },
-            { time: '12:30 - 14:00', title: 'Déjeuner' },
-            { time: '14:00 - 15:30', title: 'Ateliers pratiques (3 tracks parallèles)' },
-            { time: '15:30 - 16:00', title: 'Pause' },
-            { time: '16:00 - 17:30', title: 'Hackathon pitch session' },
-            { time: '17:30 - 18:00', title: 'Clôture et remise de prix' },
-        ],
-        speakers: [
-            { name: 'Dr. Aimé Bienvenu', role: 'CEO, Blockchain Bénin' },
-            { name: 'Sarah Johnson', role: 'Stellar Foundation' },
-            { name: 'Kofi Mensah', role: 'DeFi Expert' },
-        ],
-    },
-    'crypto-treasury': {
-        id: 2,
-        slug: 'crypto-treasury',
-        title: 'Crypto Treasury',
-        subtitle: 'Hackathon Finance',
-        date: '06 Décembre 2025',
-        day: '06',
-        month: 'Décembre',
-        year: '2025',
-        time: '10:00 - 17:00',
-        location: 'Cotonou, Bénin',
-        venue: 'Hub Innovation Cotonou',
-        address: 'Quartier Haie Vive, Cotonou',
-        description: '48h pour développer des solutions blockchain innovantes pour l\'Afrique.',
-        fullDescription: `Le Crypto Treasury Hackathon est un événement de 48 heures où les meilleurs développeurs et entrepreneurs d'Afrique se réunissent pour créer des solutions blockchain innovantes.
-
-Thèmes du hackathon:
-• Finance décentralisée (DeFi)
-• Paiements transfrontaliers
-• Tokenisation d'actifs
-• Identité numérique
-
-Prix à gagner:
-• 1er prix: 500 000 FCFA + incubation
-• 2ème prix: 300 000 FCFA
-• 3ème prix: 200 000 FCFA`,
-        participants: '100+',
-        type: 'Hackathon',
-        color: 'secondary',
-        price: '5 000 FCFA',
-        image: '/images/event-hackathon.png',
-        agenda: [
-            { time: 'Jour 1 - 10:00', title: 'Lancement et présentation des défis' },
-            { time: 'Jour 1 - 12:00', title: 'Formation des équipes' },
-            { time: 'Jour 1 - 14:00', title: 'Début du hacking' },
-            { time: 'Jour 2 - 14:00', title: 'Soumission des projets' },
-            { time: 'Jour 2 - 15:00', title: 'Présentations des projets' },
-            { time: 'Jour 2 - 17:00', title: 'Remise des prix' },
-        ],
-        speakers: [],
-    },
-    'noel-en-or': {
-        id: 3,
-        slug: 'noel-en-or',
-        title: 'Noël en Or',
-        subtitle: 'Bootcamp Développeur Blockchain',
-        date: '14 Décembre 2025',
-        day: '14',
-        month: 'Décembre',
-        year: '2025',
-        time: '6 semaines intensives',
-        location: 'Cotonou, Bénin',
-        venue: 'Campus Blockchain Bénin',
-        address: 'Quartier Haie Vive, Cotonou',
-        description: 'Formation intensive de 6 semaines pour devenir développeur blockchain professionnel.',
-        fullDescription: `Le Bootcamp Noël en Or est une formation intensive de 6 semaines conçue pour transformer des développeurs traditionnels en experts blockchain.
-
-Programme:
-• Semaine 1-2: Fondamentaux de la blockchain
-• Semaine 3-4: Développement de smart contracts (Solidity)
-• Semaine 5: Développement frontend Web3
-• Semaine 6: Projet final et certification
-
-Ce que vous obtenez:
-• Formation pratique par des experts
-• Certification reconnue
-• Accès au réseau d'entreprises partenaires
-• Opportunités d'emploi`,
-        participants: '50',
-        type: 'Formation',
-        color: 'accent',
-        price: '150 000 FCFA',
-        image: '/images/event-workshop.png',
-        agenda: [],
-        speakers: [],
-    },
-    'web3-meetup': {
-        id: 4,
-        slug: 'web3-meetup',
-        title: 'Web3 Meetup',
-        subtitle: 'Networking Cotonou',
-        date: '20 Janvier 2026',
-        day: '20',
-        month: 'Janvier',
-        year: '2026',
-        time: '18:00 - 21:00',
-        location: 'Cotonou, Bénin',
-        venue: 'Espace Coworking BeninTech',
-        address: 'Akpakpa, Cotonou',
-        description: 'Rencontre mensuelle de la communauté blockchain béninoise.',
-        fullDescription: `Rejoignez-nous pour notre meetup mensuel dédié à la communauté Web3 et blockchain du Bénin.
-
-Au programme:
-• Présentations de projets locaux
-• Discussions sur les tendances du marché
-• Networking avec professionnels et passionnés
-• Rafraîchissements offerts
-
-C'est l'occasion idéale de rencontrer d'autres passionnés, partager vos idées et découvrir les opportunités de l'écosystème blockchain local.`,
-        participants: '80+',
-        type: 'Meetup',
-        color: 'primary',
-        price: 'Gratuit',
-        image: '/images/event-meetup.png',
-        agenda: [
-            { time: '18:00 - 18:30', title: 'Accueil et networking' },
-            { time: '18:30 - 19:30', title: 'Présentations (3 projets)' },
-            { time: '19:30 - 20:00', title: 'Discussion ouverte' },
-            { time: '20:00 - 21:00', title: 'Networking libre' },
-        ],
-        speakers: [],
-    },
-};
-
-interface EventType {
-    id: number;
-    slug: string;
-    title: string;
-    subtitle: string;
-    date: string;
-    day: string;
-    month: string;
-    year: string;
-    time: string;
-    location: string;
-    venue: string;
-    address: string;
-    description: string;
-    fullDescription: string;
-    participants: string;
-    type: string;
-    color: string;
-    price: string;
-    image: string;
-    agenda: { time: string; title: string }[];
-    speakers: { name: string; role: string }[];
-}
+import { reader } from '@/lib/keystatic';
+import { DocumentRenderer } from '@keystatic/core/renderer';
 
 interface PageProps {
     params: Promise<{ slug: string }>;
@@ -198,7 +15,7 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
     const { slug } = await params;
-    const event = eventsData[slug];
+    const event = await reader.collections.events.read(slug);
 
     if (!event) {
         return { title: 'Événement non trouvé' };
@@ -211,16 +28,45 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export async function generateStaticParams() {
-    return Object.keys(eventsData).map((slug) => ({ slug }));
+    const slugs = await reader.collections.events.list();
+    return slugs.map((slug) => ({ slug }));
 }
 
 export default async function EventDetailPage({ params }: PageProps) {
     const { slug } = await params;
-    const event = eventsData[slug];
+    const eventData = await reader.collections.events.read(slug);
 
-    if (!event) {
+    if (!eventData) {
         notFound();
     }
+
+    // Format date
+    const dateObj = new Date(eventData.date);
+    const day = dateObj.getDate().toString().padStart(2, '0');
+    const month = dateObj.toLocaleString('fr-FR', { month: 'short' }).replace('.', '');
+    const formattedDate = dateObj.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+
+    const fullDescription = await eventData.fullDescription();
+
+    const event = {
+        ...eventData,
+        day,
+        month,
+        date: formattedDate,
+        image: eventData.image || '/images/placeholder-event.jpg',
+    };
+
+    // Helper to extract URL from iframe tag if user pasted the whole code
+    const getMapUrl = (input: string | undefined) => {
+        if (!input) return null;
+        if (input.startsWith('<iframe')) {
+            const match = input.match(/src="([^"]+)"/);
+            return match ? match[1] : null;
+        }
+        return input;
+    };
+
+    const mapUrl = getMapUrl(event.mapEmbedUrl);
 
     const getColorClasses = (color: string) => {
         switch (color) {
@@ -310,7 +156,7 @@ export default async function EventDetailPage({ params }: PageProps) {
 
                     {/* CTA Buttons */}
                     <div className="flex flex-col sm:flex-row gap-4 lg:flex-col">
-                        <Button variant="primary" size="lg" className="whitespace-nowrap">
+                        <Button href={event.registrationLink || '#'} variant="primary" size="lg" className="whitespace-nowrap">
                             S&apos;inscrire — {event.price}
                         </Button>
                         <button className="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 transition-colors">
@@ -330,7 +176,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                         <div>
                             <h2 className="text-2xl font-bold text-white mb-4">À propos de l&apos;événement</h2>
                             <div className="prose prose-invert prose-lg max-w-none">
-                                <p className="text-gray-300 whitespace-pre-line">{event.fullDescription}</p>
+                                <DocumentRenderer document={fullDescription} />
                             </div>
                         </div>
 
@@ -385,10 +231,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                                     <CheckCircle2 size={18} className="text-secondary-500" />
                                     <span>Accès complet à l&apos;événement</span>
                                 </div>
-                                <div className="flex items-center gap-3 text-gray-300">
-                                    <CheckCircle2 size={18} className="text-secondary-500" />
-                                    <span>Certificat de participation</span>
-                                </div>
+
                                 <div className="flex items-center gap-3 text-gray-300">
                                     <CheckCircle2 size={18} className="text-secondary-500" />
                                     <span>Networking exclusif</span>
@@ -399,7 +242,7 @@ export default async function EventDetailPage({ params }: PageProps) {
                                 </div>
                             </div>
 
-                            <Button variant="primary" size="lg" className="w-full">
+                            <Button href={event.registrationLink || '#'} variant="primary" size="lg" className="w-full">
                                 S&apos;inscrire
                             </Button>
 
@@ -407,6 +250,21 @@ export default async function EventDetailPage({ params }: PageProps) {
                                 Places limitées. Inscrivez-vous dès maintenant !
                             </p>
                         </div>
+
+                        {/* Google Map Embed */}
+                        {mapUrl && (
+                            <div className="mt-8 rounded-2xl overflow-hidden border border-white/10 h-64 w-full shadow-lg">
+                                <iframe
+                                    src={mapUrl}
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0 }}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                ></iframe>
+                            </div>
+                        )}
                     </div>
                 </div>
             </Section>

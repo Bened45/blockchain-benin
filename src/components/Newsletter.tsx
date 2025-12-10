@@ -40,13 +40,13 @@ const Newsletter = () => {
 
                 <form onSubmit={handleSubmit} className="max-w-xl mx-auto relative group">
                     <div className="absolute inset-0 bg-white/20 rounded-full blur-xl group-hover:bg-white/30 transition-colors duration-500"></div>
-                    <div className="relative flex items-center bg-white rounded-full p-2 shadow-2xl">
+                    <div className="relative flex items-center glass-premium rounded-full p-2 shadow-2xl">
                         <input
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="votre@email.com"
-                            className="flex-1 px-6 py-4 bg-transparent text-dark-bg placeholder-gray-400 focus:outline-none text-lg"
+                            className="flex-1 px-6 py-4 bg-transparent text-white placeholder-gray-300 focus:outline-none text-lg"
                             required
                             disabled={status === 'loading' || status === 'success'}
                         />

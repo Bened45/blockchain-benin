@@ -41,14 +41,14 @@ const Navbar = () => {
 
     return (
         <nav
-            className="fixed w-full z-50 transition-all duration-300 bg-dark-bg/80 backdrop-blur-md shadow-lg border-b border-white/10"
+            className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-dark-bg/90 backdrop-blur-md border-b border-white/10 py-2 shadow-lg' : 'bg-transparent py-3'}`}
         >
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-12 lg:h-auto relative">
                     {/* Logo - Absolutely centered on mobile, flex on desktop */}
                     <div className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 lg:flex-shrink-0">
                         <Link href="/" className="flex items-center gap-3 group">
-                            <div className="w-40 h-10 sm:w-10 sm:h-10 lg:w-28 lg:h-28 relative flex-shrink-0">
+                            <div className="w-32 h-8 sm:w-10 sm:h-10 lg:w-20 lg:h-20 relative flex-shrink-0">
                                 <Image
                                     src="/logo.png"
                                     alt="Blockchain Bénin Charity Logo"
@@ -120,7 +120,7 @@ const Navbar = () => {
                     ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}
                 `}
             >
-                <div className="glass-dark border-t border-white/10">
+                <div className="bg-dark-bg/95 backdrop-blur-xl border-t border-white/10">
                     <div className="px-4 pt-4 pb-6 space-y-2">
                         {navLinks.map((link) => (
                             <Link

@@ -6,7 +6,20 @@ import Section from './ui/Section';
 import Button from './ui/Button';
 import { Calendar, MapPin, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const Events = () => {
+interface EventsProps {
+    events: {
+        title: string;
+        date: string;
+        subtitle: string;
+        description: string;
+        image: string;
+        category: string;
+        action: string;
+        slug: string;
+    }[];
+}
+
+const Events = ({ events }: EventsProps) => {
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const scroll = (direction: 'left' | 'right') => {
@@ -16,45 +29,6 @@ const Events = () => {
             current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         }
     };
-
-    const events = [
-        {
-            title: 'Stellar Pop City',
-            date: '06 Decembre 2025',
-            subtitle: 'Blockchain BENIN Week 2026',
-            description: 'Une semaine dédiée à la blockchain avec conférences, ateliers et networking.',
-            image: '/images/event-conference.png',
-            category: 'Conférence',
-            action: "S'inscrire"
-        },
-        {
-            title: 'Crypto Treasury',
-            date: '06 Decembre 2025',
-            subtitle: 'Hackathon Finance',
-            description: '48h pour développer des solutions blockchain innovantes pour l&apos;Afrique.',
-            image: '/images/event-hackathon.png',
-            category: 'Hackathon',
-            action: 'Participer'
-        },
-        {
-            title: 'Noël en Or',
-            date: '14 Decembre 2026',
-            subtitle: 'Bootcamp Développeur',
-            description: 'Formation intensive de 6 semaines pour devenir développeur blockchain.',
-            image: '/images/event-workshop.png',
-            category: 'Formation',
-            action: 'Contribuer'
-        },
-        {
-            title: 'Web3 Meetup',
-            date: '20 Janvier 2026',
-            subtitle: 'Networking Cotonou',
-            description: 'Rencontre mensuelle de la communauté blockchain béninoise.',
-            image: '/images/event-meetup.png',
-            category: 'Meetup',
-            action: 'Rejoindre'
-        }
-    ];
 
     return (
         <Section id="events" className="bg-dark-bg py-32 overflow-hidden">
@@ -103,7 +77,7 @@ const Events = () => {
                                 fill
                                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/50 to-transparent opacity-90"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/80 via-transparent to-transparent opacity-60"></div>
                         </div>
 
                         {/* Content */}
@@ -119,18 +93,13 @@ const Events = () => {
                             </div>
 
                             <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <h3 className="text-3xl font-display font-bold text-white mb-2">{event.title}</h3>
-                                <p className="text-primary-400 font-medium mb-4">{event.subtitle}</p>
-                                <p className="text-gray-300 mb-8 line-clamp-2 group-hover:line-clamp-none transition-all duration-300">
-                                    {event.description}
-                                </p>
                                 <Button
-                                    href="#"
+                                    href={`/evenements/${event.slug}`}
                                     variant="primary"
                                     className="w-full justify-between group/btn"
                                     rightIcon={<ArrowRight className="group-hover/btn:translate-x-1 transition-transform" />}
                                 >
-                                    {event.action}
+                                    S&apos;inscrire
                                 </Button>
                             </div>
                         </div>

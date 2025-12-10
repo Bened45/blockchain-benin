@@ -3,79 +3,49 @@ import Section from '@/components/ui/Section';
 import { Calendar, MapPin, Users, Clock, ArrowRight, Sparkles, History } from 'lucide-react';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
+import { reader } from '@/lib/keystatic';
 
 export const metadata: Metadata = {
     title: "Événements | Blockchain Bénin",
     description: "Conférences, hackathons, meetups et ateliers. Restez informé des prochains événements blockchain au Bénin.",
 };
 
-const EventsPage = () => {
-    const upcomingEvents = [
-        {
-            id: 1,
-            slug: 'stellar-pop-city',
-            title: 'Stellar Pop City',
-            date: '06 Décembre 2025',
-            day: '06',
-            month: 'Déc',
-            time: '09:00 - 18:00',
-            location: 'Cotonou, Bénin',
-            subtitle: 'Blockchain BENIN Week 2026',
-            description: 'Une semaine dédiée à la blockchain avec conférences, ateliers et networking pour tous les passionnés.',
-            participants: '500+',
-            type: 'Conférence',
-            color: 'primary',
-            featured: true,
-        },
-        {
-            id: 2,
-            slug: 'crypto-treasury',
-            title: 'Crypto Treasury',
-            date: '06 Décembre 2025',
-            day: '06',
-            month: 'Déc',
-            time: '10:00 - 17:00',
-            location: 'Cotonou, Bénin',
-            subtitle: 'Hackathon Finance',
-            description: '48h pour développer des solutions blockchain innovantes pour l\'Afrique.',
-            participants: '100+',
-            type: 'Hackathon',
-            color: 'secondary',
-            featured: false,
-        },
-        {
-            id: 3,
-            slug: 'noel-en-or',
-            title: 'Noël en Or',
-            date: '14 Décembre 2025',
-            day: '14',
-            month: 'Déc',
-            time: '6 semaines',
-            location: 'Cotonou, Bénin',
-            subtitle: 'Bootcamp Développeur',
-            description: 'Formation intensive pour devenir développeur blockchain professionnel.',
-            participants: '50',
-            type: 'Formation',
-            color: 'accent',
-            featured: false,
-        },
-        {
-            id: 4,
-            slug: 'web3-meetup',
-            title: 'Web3 Meetup',
-            date: '20 Janvier 2026',
-            day: '20',
-            month: 'Jan',
-            time: '18:00 - 21:00',
-            location: 'Cotonou, Bénin',
-            subtitle: 'Networking Cotonou',
-            description: 'Rencontre mensuelle de la communauté blockchain béninoise.',
-            participants: '80+',
-            type: 'Meetup',
-            color: 'primary',
-            featured: false,
-        },
-    ];
+const EventsPage = async () => {
+    const events = await reader.collections.events.all();
+
+    const upcomingEvents = events.map(event => {
+        const data = event.entry;
+        const dateObj = new Date(data.date);
+        const day = dateObj.getDate().toString().padStart(2, '0');
+        const month = dateObj.toLocaleString('fr-FR', { month: 'short' }).replace('.', '');
+
+        return {
+            id: event.slug, // Use slug as ID
+            slug: event.slug,
+            title: data.title,
+            date: dateObj.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' }),
+            day,
+            month,
+            time: data.time,
+            location: data.location,
+            subtitle: data.subtitle,
+            description: data.description,
+            participants: data.participants,
+            type: data.type,
+            color: data.color,
+            featured: data.featured,
+            image: data.image,
+        };
+    });
+
+    // Sort events by date (closest first)
+    // Sort events by date (closest first)
+    upcomingEvents.sort((a, b) => {
+        const dateA = new Date(events.find(e => e.slug === a.slug)?.entry.date || '');
+        const dateB = new Date(events.find(e => e.slug === b.slug)?.entry.date || '');
+        return dateA.getTime() - dateB.getTime();
+    });
 
     const pastEvents = [
         {
@@ -210,15 +180,28 @@ const EventsPage = () => {
                         return (
                             <div
                                 key={event.id}
-                                className={`group glass rounded-2xl overflow-hidden border ${colors.border} hover:border-white/20 transition-all duration-300`}
+                                className={`group glass rounded-2xl overflow-hidden border ${colors.border} hover:border-white/20 transition-all duration-300 relative`}
                             >
+                                {/* Background Image with Overlay */}
+                                <div className="absolute inset-0 z-0">
+                                    {event.image && (
+                                        <Image
+                                            src={event.image}
+                                            alt={event.title}
+                                            fill
+                                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                        />
+                                    )}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-dark-bg via-dark-bg/80 to-transparent" />
+                                </div>
+
                                 {/* Header with date */}
-                                <div className="pt-32 lg:pt-44 pb-12">
+                                <div className="relative z-10 pt-32 lg:pt-44 pb-4 px-6">
                                     <div className="flex items-start justify-between mb-4">
                                         <div className={`px-3 py-1 rounded-full text-xs font-semibold ${colors.bg} text-white`}>
                                             {event.type}
                                         </div>
-                                        <div className="text-right">
+                                        <div className="text-right bg-dark-bg/50 backdrop-blur-sm p-2 rounded-lg border border-white/10">
                                             <div className={`text-2xl font-bold ${colors.text}`}>{event.day}</div>
                                             <div className="text-sm text-gray-400">{event.month}</div>
                                         </div>
@@ -228,11 +211,11 @@ const EventsPage = () => {
                                         {event.title}
                                     </h3>
                                     <p className="text-gray-400 text-sm mb-3">{event.subtitle}</p>
-                                    <p className="text-gray-300 text-sm mb-4">{event.description}</p>
+                                    <p className="text-gray-300 text-sm mb-4 line-clamp-2">{event.description}</p>
                                 </div>
 
                                 {/* Footer */}
-                                <div className="p-6 pt-0">
+                                <div className="relative z-10 p-6 pt-0">
                                     <div className="flex flex-wrap gap-4 text-xs text-gray-400 mb-4">
                                         <div className="flex items-center gap-1">
                                             <Clock size={12} />

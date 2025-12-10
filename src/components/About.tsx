@@ -112,7 +112,7 @@ const About = () => {
                 <div className="container-custom relative z-10 py-20">
                     <div className="max-w-5xl mx-auto text-center">
                         {/* Badge */}
-                        <div className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white mb-8 animate-slide-down">
+                        <div className="inline-flex items-center gap-2 px-6 py-3 glass-premium rounded-full text-white mb-8 animate-slide-down">
                             <Sparkles className="text-yellow-400 animate-pulse" size={20} />
                             <span className="font-semibold">Découvrez Notre Histoire</span>
                         </div>
@@ -146,7 +146,7 @@ const About = () => {
                             {achievements.map((achievement, index) => {
                                 const Icon = achievement.icon;
                                 return (
-                                    <div key={index} className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 hover:scale-105">
+                                    <div key={index} className="glass-premium rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 hover:scale-105">
                                         <Icon className="text-blue-400 mb-3 mx-auto" size={32} />
                                         <div className="text-3xl md:text-4xl font-bold text-white mb-1">{achievement.number}</div>
                                         <div className="text-sm text-blue-200 font-medium">{achievement.label}</div>

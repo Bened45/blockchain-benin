@@ -7,6 +7,10 @@ import { ArrowRight, ChevronDown } from 'lucide-react';
 const Hero = () => {
     return (
         <div className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-dark-bg">
+            {/* Background Blobs */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[128px] animate-pulse-slow"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[128px] animate-pulse-slow animation-delay-2000"></div>
+
             {/* Interactive Network Background */}
             <NetworkBackground />
 
@@ -18,7 +22,7 @@ const Hero = () => {
                 <div className="max-w-5xl mx-auto space-y-8">
                     {/* Badge */}
                     <div className="animate-fade-in flex justify-center">
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-white text-sm font-medium border border-white/10 backdrop-blur-md hover:scale-105 transition-transform duration-300 cursor-default">
+                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-premium text-white text-sm font-medium border border-white/10 backdrop-blur-md hover:scale-105 transition-transform duration-300 cursor-default">
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-secondary"></span>
@@ -70,17 +74,12 @@ const Hero = () => {
                             { value: '300+', label: 'Experts Formés' },
                             { value: '20+', label: 'Partenaires' },
                         ].map((stat, index) => (
-                            <div
+                            <AnimatedStat
                                 key={index}
-                                className="glass p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-white/5 hover:border-primary/30 transition-colors duration-300 group"
-                            >
-                                <div className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-white mb-1 group-hover:scale-110 transition-transform duration-300 origin-center">
-                                    {stat.value}
-                                </div>
-                                <div className="text-sm text-gray-400 group-hover:text-primary-300 transition-colors">
-                                    {stat.label}
-                                </div>
-                            </div>
+                                value={stat.value}
+                                label={stat.label}
+                                delay={index * 100}
+                            />
                         ))}
                     </div>
                 </div>
@@ -339,7 +338,7 @@ const AnimatedStat = ({ value, label, delay }: { value: string; label: string; d
     return (
         <div
             ref={ref}
-            className="glass rounded-2xl p-6 backdrop-blur-xl hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 cursor-pointer group"
+            className="glass-premium rounded-2xl p-6 backdrop-blur-xl hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 cursor-pointer group"
             style={{
                 animationDelay: `${delay}ms`,
             }}

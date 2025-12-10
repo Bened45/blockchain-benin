@@ -28,8 +28,13 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="bg-dark-bg text-white pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12 border-t border-white/5">
-            <div className="container mx-auto px-4">
+        <footer className="relative bg-dark-bg text-white pt-20 pb-12 overflow-hidden">
+            {/* Decorative background elements */}
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent"></div>
+            <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+            <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+
+            <div className="container mx-auto px-4 relative z-10">
                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12 md:mb-20">
                     {/* Brand */}
                     <div className="col-span-2 sm:col-span-2 md:col-span-1 lg:col-span-1 space-y-6">

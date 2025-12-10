@@ -1,0 +1,14 @@
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Keystatic Admin',
+    description: 'Admin interface for Blockchain Benin',
+};
+
+export default function Layout({ children }: { children: React.ReactNode }) {
+    return (
+        <div className="keystatic-admin">
+            {children}
+        </div>
+    );
+}
