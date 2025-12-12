@@ -5,8 +5,15 @@ import Section from './ui/Section';
 import { ArrowUpRight } from 'lucide-react';
 import { reader } from '@/lib/keystatic';
 
-const Gallery = () => {
-    const galleryItems = [
+interface GalleryItem {
+    title: string;
+    category: string;
+    image: string;
+    size: string;
+}
+
+const Gallery = ({ items = [] }: { items?: GalleryItem[] }) => {
+    const galleryItems = items.length > 0 ? items : [
         { title: "Campus Meetup Tour", category: "Événement", image: "/images/event-meetup.png", size: "large" },
         { title: "FAB Summit", category: "Conférence", image: "/images/event-conference.png", size: "small" },
         { title: "Club Blockchain", category: "Communauté", image: "/images/community-team.png", size: "tall" },

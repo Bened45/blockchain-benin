@@ -119,35 +119,57 @@ export default config({
             },
         }),
 
-        // Collection pour la galerie
-        gallery: collection({
-            label: 'Galerie',
+        // Collection pour la galerie (Albums)
+        albums: collection({
+            label: 'Galerie / Albums',
             slugField: 'title',
-            path: 'content/gallery/*',
+            path: 'content/albums/*',
             schema: {
-                title: fields.slug({ name: { label: 'Titre' } }),
-                category: fields.text({
-                    label: 'Catégorie',
-                    validation: { length: { min: 1 } },
-                }),
-                image: fields.image({
-                    label: 'Image',
-                    directory: 'public/images/gallery',
-                    publicPath: '/images/gallery/',
-                }),
-                size: fields.select({
-                    label: 'Taille',
-                    options: [
-                        { label: 'Petit', value: 'small' },
-                        { label: 'Large', value: 'large' },
-                        { label: 'Haut', value: 'tall' },
-                        { label: 'Large horizontal', value: 'wide' },
-                    ],
-                    defaultValue: 'small',
-                }),
+                title: fields.slug({ name: { label: 'Titre de l\'album' } }),
                 date: fields.date({
-                    label: 'Date de la photo',
+                    label: 'Date de l\'événement',
+                    validation: { isRequired: true },
                 }),
+                category: fields.select({
+                    label: 'Catégorie',
+                    options: [
+                        { label: 'Événement', value: 'event' },
+                        { label: 'Formation', value: 'workshop' },
+                        { label: 'Communauté', value: 'community' },
+                    ],
+                    defaultValue: 'event',
+                }),
+                cover: fields.image({
+                    label: 'Image de couverture',
+                    directory: 'public/images/albums',
+                    publicPath: '/images/albums/',
+                    validation: { isRequired: true },
+                }),
+                images: fields.array(
+                    fields.object({
+                        image: fields.image({
+                            label: 'Photo',
+                            directory: 'public/images/albums',
+                            publicPath: '/images/albums/',
+                            validation: { isRequired: true },
+                        }),
+                        size: fields.select({
+                            label: 'Taille (pour la grille)',
+                            options: [
+                                { label: 'Petit (1x1)', value: 'small' },
+                                { label: 'Large (2x2)', value: 'large' },
+                                { label: 'Haut (1x2)', value: 'tall' },
+                                { label: 'Large horizontal (2x1)', value: 'wide' },
+                            ],
+                            defaultValue: 'small',
+                        }),
+                        caption: fields.text({ label: 'Légende (optionnel)' }),
+                    }),
+                    {
+                        label: 'Photos de l\'album',
+                        itemLabel: (props) => props.fields.caption.value || 'Photo sans légende',
+                    }
+                ),
             },
         }),
 
