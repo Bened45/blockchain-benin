@@ -145,31 +145,16 @@ export default config({
                     publicPath: '/images/albums/',
                     validation: { isRequired: true },
                 }),
-                images: fields.array(
-                    fields.object({
-                        image: fields.image({
-                            label: 'Photo',
-                            directory: 'public/images/albums',
-                            publicPath: '/images/albums/',
-                            validation: { isRequired: true },
-                        }),
-                        size: fields.select({
-                            label: 'Taille (pour la grille)',
-                            options: [
-                                { label: 'Petit (1x1)', value: 'small' },
-                                { label: 'Large (2x2)', value: 'large' },
-                                { label: 'Haut (1x2)', value: 'tall' },
-                                { label: 'Large horizontal (2x1)', value: 'wide' },
-                            ],
-                            defaultValue: 'small',
-                        }),
-                        caption: fields.text({ label: 'Légende (optionnel)' }),
-                    }),
-                    {
-                        label: 'Photos de l\'album',
-                        itemLabel: (props) => props.fields.caption.value || 'Photo sans légende',
-                    }
-                ),
+                content: fields.document({
+                    label: 'Contenu (Glissez vos photos ici)',
+                    formatting: true,
+                    dividers: true,
+                    links: true,
+                    images: {
+                        directory: 'public/images/albums',
+                        publicPath: '/images/albums/',
+                    },
+                }),
             },
         }),
 

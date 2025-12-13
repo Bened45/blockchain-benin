@@ -41,6 +41,19 @@ export default async function AlbumPage({ params }: PageProps) {
         notFound();
     }
 
+    const content = await album.content();
+    const images: { src: string; alt: string }[] = [];
+    const extractImages = (nodes: any[]) => {
+        for (const node of nodes) {
+            if (node.type === 'image') {
+                images.push({ src: node.src, alt: node.alt || album.title });
+            } else if (node.children) {
+                extractImages(node.children);
+            }
+        }
+    };
+    extractImages(content);
+
     return (
         <main className="min-h-screen bg-white">
             <Navbar />
@@ -63,7 +76,7 @@ export default async function AlbumPage({ params }: PageProps) {
                             <span>{new Date(album.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
                         </div>
                         <div className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium">
-                            {album.images.length} photos
+                            {images.length} photos
                         </div>
                     </div>
                 </div>
@@ -71,18 +84,18 @@ export default async function AlbumPage({ params }: PageProps) {
                 {/* Photos Grid */}
                 <div className="container mx-auto px-4">
                     <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
-                        {album.images.map((img, index) => (
+                        {images.map((img, index) => (
                             <div key={index} className="break-inside-avoid relative group rounded-2xl overflow-hidden">
                                 <Image
-                                    src={img.image}
-                                    alt={img.caption || `Photo ${index + 1} de ${album.title}`}
+                                    src={img.src}
+                                    alt={img.alt}
                                     width={800}
                                     height={600}
                                     className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                                 />
-                                {img.caption && (
+                                {img.alt && img.alt !== album.title && (
                                     <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <p className="text-white text-sm font-medium">{img.caption}</p>
+                                        <p className="text-white text-sm font-medium">{img.alt}</p>
                                     </div>
                                 )}
                             </div>

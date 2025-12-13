@@ -25,20 +25,37 @@ export default async function Home() {
     const albums = await reader.collections.albums.all();
 
     // Flatten images from all albums for the homepage gallery
-    const galleryItems = albums.flatMap(album => {
+    const galleryItems = await Promise.all(albums.map(async (album) => {
         const entry = album.entry;
-        return entry.images.map(img => ({
-            image: img.image,
-            title: img.caption || entry.title,
+        const content = await entry.content();
+
+        // Extract images from document content
+        const images: { src: string; alt: string }[] = [];
+        const extractImages = (nodes: any[]) => {
+            for (const node of nodes) {
+                if (node.type === 'image') {
+                    images.push({ src: node.src, alt: node.alt || entry.title });
+                } else if (node.children) {
+                    extractImages(node.children);
+                }
+            }
+        };
+        extractImages(content);
+
+        return images.map(img => ({
+            image: img.src,
+            title: img.alt,
             category: entry.category === 'event' ? 'Événement' :
                 entry.category === 'workshop' ? 'Formation' : 'Communauté',
-            size: img.size,
+            size: 'small', // Default size since we lost manual selection
             date: entry.date,
         }));
-    });
+    }));
+
+    const flatGalleryItems = galleryItems.flat();
 
     // Sort by date (newest first) and take latest 8 items
-    const sortedGallery = galleryItems
+    const sortedGallery = flatGalleryItems
         .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
         .slice(0, 8);
     return (

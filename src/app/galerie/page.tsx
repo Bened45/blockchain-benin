@@ -32,7 +32,21 @@ const getLabelForCategory = (category: string) => {
 const GalleryPage = async () => {
     const albums = await reader.collections.albums.all();
 
-    const sortedAlbums = albums.sort((a, b) =>
+    const albumsWithCounts = await Promise.all(albums.map(async (album) => {
+        const entry = album.entry;
+        const content = await entry.content();
+        let imageCount = 0;
+        const countImages = (nodes: any[]) => {
+            for (const node of nodes) {
+                if (node.type === 'image') imageCount++;
+                else if (node.children) countImages(node.children);
+            }
+        };
+        countImages(content);
+        return { ...album, imageCount };
+    }));
+
+    const sortedAlbums = albumsWithCounts.sort((a, b) =>
         new Date(b.entry.date).getTime() - new Date(a.entry.date).getTime()
     );
 
@@ -95,7 +109,7 @@ const GalleryPage = async () => {
                                         <div className="space-y-2 mb-6">
                                             <div className="flex items-center gap-2 text-white/80 text-sm">
                                                 <Users size={16} />
-                                                <span>{entry.images.length} photos</span>
+                                                <span>{album.imageCount} photos</span>
                                             </div>
                                         </div>
 
